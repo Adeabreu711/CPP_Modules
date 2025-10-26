@@ -7,7 +7,6 @@ SRC = \
 
 INCLUDES = -Iincludes/
 
-SRC_DIR = src/
 OBJ_DIR = obj/
 
 all: $(NAME) $(OBJ_DIR)
@@ -20,7 +19,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 #Compilation des fichiers .cpp en .o
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+$(OBJ_DIR)%.o: %.cpp
 	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 #Création du programme
