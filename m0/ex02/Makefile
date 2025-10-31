@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = \
 	tests.cpp Account.cpp
 
-INCLUDES = -Iincludes/
+INCLUDES = -I
 
 OBJ_DIR = obj/
 
