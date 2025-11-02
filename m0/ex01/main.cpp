@@ -2,7 +2,6 @@
 
 int	main(void)
 {
-	int			id = 0;
 	PhoneBook	phone_book;
 	std::string	input;
 
@@ -10,12 +9,11 @@ int	main(void)
 	{
 		std::getline(std::cin, input);
 		if (input == "ADD")
-		{
 			phone_book.addUser();
-			id++;
-		}
 		if (input == "SEARCH")
 			phone_book.searchUser();
+		if (input == "EXIT")
+			return (0);
 	}
 	return (0);
 }

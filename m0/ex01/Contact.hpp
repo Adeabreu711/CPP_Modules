@@ -12,7 +12,9 @@ class Contact
 		std::string	nickname;
 		std::string	phone_number;
 		std::string	darkest_secret;
-		void	addUser();
+		std::string	getInfoByID(int info_id);
+		void		displayContact(void);
+		int			addUser(void);
 };
 
 #endif

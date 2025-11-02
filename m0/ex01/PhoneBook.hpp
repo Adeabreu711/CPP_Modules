@@ -12,7 +12,7 @@ class PhoneBook
 	private :
 		Contact	contact[8];
 		int		contact_size;
-		void	print_field(int contact_id, int field_id);
+		void	displayPhoneBook(void);
 };
 
 #endif
