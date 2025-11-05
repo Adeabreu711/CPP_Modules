@@ -16,18 +16,25 @@ PhoneBook::PhoneBook() :
 
 void	PhoneBook::addUser(void)
 {
-	if (contact_size >= MAX_CONTACT)
+	Contact	new_contact;
+
+	if (!new_contact.addUser())
 	{
-		std::cout << "MAX CONTACT" << std::endl;
-		for (int i = 1; i < MAX_CONTACT; i++)
-			contact[i- 1] = contact[i];
-		if (contact[MAX_CONTACT - 1].addUser() == -1)
-			std::cout
+		std::cout << std::endl << "Contact can't have any empty fields"
+			<< std::endl << DASH_LINE << std::endl;
 		return ;
 	}
-	contact[contact_size++].addUser();
+	if (contact_size >= MAX_CONTACT)
+	{
+		for (int i = 1; i < MAX_CONTACT; i++)
+		{
+			contact[i- 1] = contact[i];
+		}
+		contact[MAX_CONTACT - 1] = new_contact;
+	}
+	else
+		contact[contact_size++] = new_contact;
 	std::cout << DASH_LINE << std::endl;
-
 }
 
 //[SEARCH_UTILS]______________________________________
@@ -55,15 +62,15 @@ int	getUserSearchInput(int contact_size)
 	std::cin >> input;
 	if (!std::isdigit(input[0]))
 	{
-		std::cout << "Error: \""  << input << "\":"
-			<< " is not a valid input" << DASH_LINE << std::endl;
+		std::cout << std::endl << "Error: \""  << input << "\":"
+			<< " is not a valid input" << std::endl;
 		return (-1);
 	}
 	contact_id = std::atoi(input.c_str());
 	if (contact_id < 0 || contact_id > contact_size)
 	{
 		std::cout << "Error: \""  << input << "\":"
-			<< " is out of range" << DASH_LINE << std::endl;
+			<< " is out of range" << std::endl;
 		return (-1);
 	}
 	return (contact_id);
@@ -92,7 +99,7 @@ void	PhoneBook::searchUser(void)
 	std::cout << std::endl;
 	if (contact_size <= 0)
 	{
-		std::cout << "Seems like you don't have any contacts"
+		std::cout << "Seems like you don't have any contacts" << std::endl
 		<< DASH_LINE << std::endl;
 		return ;
 	}

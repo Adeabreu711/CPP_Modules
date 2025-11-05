@@ -8,7 +8,7 @@ class PhoneBook
 	public :
 		PhoneBook();
 		void	searchUser(void);
-		void	addUser(void);
+		void		addUser(void);
 	private :
 		Contact	contact[8];
 		int		contact_size;

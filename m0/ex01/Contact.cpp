@@ -28,24 +28,24 @@ void	Contact::displayContact(void)
 int	Contact::addUser(void)
 {
 	std::cout << "first_name     : ";
-	if (!std::getline(std::cin, first_name))
-		return (-1);
+	if (!std::getline(std::cin, first_name) || first_name.empty())
+		return (0);
 	std::cout << "last_name      : ";
-	if (!std::getline(std::cin, last_name))
-		return (-1);
+	if (!std::getline(std::cin, last_name) || last_name.empty())
+		return (0);
 	std::cout << "nickname       : ";
-	if (!std::getline(std::cin, nickname))
-		return (-1);
+	if (!std::getline(std::cin, nickname) || nickname.empty())
+		return (0);
 	std::cout << "phone_number   : ";
-	if (!std::getline(std::cin, phone_number))
-		return (-1);
+	if (!std::getline(std::cin, phone_number) || phone_number.empty())
+		return (0);
 	std::cout << "darkest_secret : ";
-	if (std::getline(std::cin, darkest_secret))
-		return (-1);
+	if (!std::getline(std::cin, darkest_secret) || darkest_secret.empty())
+		return (0);
 	std::cout
 		<< std::endl
 		<< first_name << " "
 		<< last_name << " "
 		<< "added !" << std::endl;
-	return (0);
+	return (1);
 }
