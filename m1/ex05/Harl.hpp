@@ -10,6 +10,7 @@ class Harl
 		~Harl(void);
 
 		void	complain(std::string level);
+
 	private :
 		void	debug(void);
 		void	warning(void);
