@@ -1,4 +1,18 @@
 #include "Fixed.hpp"
+#include <cmath>
+
+//Fixed RawBits Var Constructor
+Fixed::Fixed(const int raw) : _rawBits(raw)
+{
+	std::cout << "Int constructor called" << std::endl;
+}
+
+//Fixed RawBits Var Constructor
+Fixed::Fixed(const float nb)
+{
+	std::cout << "Float constructor called" << std::endl;
+	_rawBits = roundf((float)nb * (float)(1 << _fractionalBitsNb));
+}
 
 //Fixed Default Constructor
 Fixed::Fixed(void) : _rawBits(0)
@@ -21,6 +35,13 @@ Fixed& Fixed::operator=(const Fixed &cpy)
 	return (*this);
 }
 
+//Ostream '<<' Assignement Operator Overload
+std::ostream &operator<<(std::ostream &os, const Fixed &cpy)
+{
+	os << cpy.toFloat();
+	return (os);
+}
+
 //Fixed Destructor
 Fixed::~Fixed(void)
 {
@@ -29,14 +50,20 @@ Fixed::~Fixed(void)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (_rawBits);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	_rawBits = raw;
 }
 
+float	Fixed::toFloat(void) const
+{
+	return ((float)_rawBits / (float)(1 << _fractionalBitsNb));
+}
 
+int		Fixed::toInt(void) const
+{
+	return (_rawBits >> _fractionalBitsNb);
+}
