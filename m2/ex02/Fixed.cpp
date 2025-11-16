@@ -31,44 +31,44 @@ Fixed& Fixed::operator=(const Fixed &cpy)
 //Fixed '>' Comparison Operator Overload
 bool	Fixed::operator>(const Fixed &other) const
 {
-	return (this->_rawBits > other._rawBits);
+	return (_rawBits > other._rawBits);
 }
 
 //Fixed '<' Comparison Operator Overload
 bool	Fixed::operator<(const Fixed &other) const
 {
-	return this->_rawBits < other._rawBits;
+	return (_rawBits < other._rawBits);
 }
 
 //Fixed '>=' Comparison Operator Overload
 bool	Fixed::operator>=(const Fixed &other) const
 {
-	return (this->_rawBits >= other._rawBits);
+	return (_rawBits >= other._rawBits);
 }
 
 //Fixed '<=' Comparison Operator Overload
 bool	Fixed::operator<=(const Fixed &other) const
 {
-	return (this->_rawBits <= other._rawBits);
+	return (_rawBits <= other._rawBits);
 }
 
 //Fixed '==' Comparison Operator Overload
 bool	Fixed::operator==(const Fixed &other) const
 {
-	return (this->_rawBits == other._rawBits);
+	return (_rawBits == other._rawBits);
 }
 
 //Fixed '!=' Comparison Operator Overload
 bool	Fixed::operator!=(const Fixed &other) const
 {
-	return (this->_rawBits != other._rawBits);
+	return (_rawBits != other._rawBits);
 }
 
 //Fixed '-' Arithmetic Operator Overload
 Fixed	Fixed::operator-(const Fixed &cpy) const
 {
 	Fixed	fixed;
-	fixed.setRawBits(this->_rawBits - cpy.getRawBits());
+	fixed.setRawBits(_rawBits - cpy.getRawBits());
 	return (fixed);
 }
 
@@ -76,7 +76,7 @@ Fixed	Fixed::operator-(const Fixed &cpy) const
 Fixed	Fixed::operator+(const Fixed &cpy) const
 {
 	Fixed	fixed;
-	fixed.setRawBits(this->_rawBits + cpy.getRawBits());
+	fixed.setRawBits(_rawBits + cpy.getRawBits());
 	return (fixed);
 }
 
@@ -84,7 +84,7 @@ Fixed	Fixed::operator+(const Fixed &cpy) const
 Fixed	Fixed::operator*(const Fixed &cpy) const
 {
 	Fixed	fixed;
-	fixed.setRawBits(this->_rawBits * cpy.getRawBits());
+	fixed.setRawBits((_rawBits * cpy.getRawBits()) >> _fractionalBitsNb);
 	return (fixed);
 }
 
@@ -92,13 +92,9 @@ Fixed	Fixed::operator*(const Fixed &cpy) const
 Fixed	Fixed::operator/(const Fixed &cpy) const
 {
 	Fixed	fixed;
-
 	if (!cpy._rawBits)
-	{
-		fixed.setRawBits(0);
-		return (fixed);
-	}
-	fixed.setRawBits(this->_rawBits / cpy.getRawBits());
+		return (0);
+	fixed.setRawBits((_rawBits << _fractionalBitsNb) / cpy.getRawBits());
 	return (fixed);
 }
 
@@ -190,4 +186,3 @@ const Fixed& Fixed::max(const Fixed &f1, const Fixed &f2)
 		return (f2);
 	return (f1);
 }
-

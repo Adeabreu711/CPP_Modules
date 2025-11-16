@@ -91,6 +91,8 @@ Fixed	Fixed::operator*(const Fixed &cpy) const
 Fixed	Fixed::operator/(const Fixed &cpy) const
 {
 	Fixed	fixed;
+	if (!cpy._rawBits)
+		return (0);
 	fixed.setRawBits((_rawBits << _fractionalBitsNb) / cpy.getRawBits());
 	return (fixed);
 }
