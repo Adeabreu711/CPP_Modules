@@ -13,6 +13,10 @@ Point::Point(const float x, const float y) : _x(x), _y(y)
 Point::Point(const Point &cpy) : _x(cpy._x), _y(cpy._y)
 {}
 
+//Fixed Destructor
+Point::~Point(void)
+{}
+
 //Point '=' Assignement Operator Overload
 Point&	Point::operator=(const Point &cpy)
 {
@@ -25,10 +29,6 @@ std::ostream	&operator<<(std::ostream &os, const Point &cpy)
 	os << "[" << cpy.getX() << ", " <<  cpy.getY() << "]";
 	return (os);
 }
-
-//Fixed Destructor
-Point::~Point(void)
-{}
 
 Fixed Point::getX(void) const
 {

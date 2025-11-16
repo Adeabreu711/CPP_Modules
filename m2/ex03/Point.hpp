@@ -22,5 +22,5 @@ class Point
 };
 
 std::ostream	&operator<<(std::ostream &os, const Point &cpy);
-
+Fixed			area(Point const &a, Point const &b, Point const &c);
 #endif

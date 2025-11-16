@@ -92,12 +92,6 @@ Fixed	Fixed::operator*(const Fixed &cpy) const
 Fixed	Fixed::operator/(const Fixed &cpy) const
 {
 	Fixed	fixed;
-
-	if (!cpy._rawBits)
-	{
-		fixed.setRawBits(0);
-		return (fixed);
-	}
 	fixed.setRawBits(this->_rawBits / cpy.getRawBits());
 	return (fixed);
 }

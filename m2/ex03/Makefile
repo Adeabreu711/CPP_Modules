@@ -1,9 +1,9 @@
-NAME = now_we_re_talking
+NAME = bsp
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = \
-	main.cpp Fixed.cpp
+	main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 INCLUDES = -Iincludes/
 
