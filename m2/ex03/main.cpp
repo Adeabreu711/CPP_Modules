@@ -3,11 +3,12 @@
 
 int	main(void)
 {
-	Point a(1,3);
-	Point b(3,2);
-	Point c(1,1);
+	Point a(1.0f, 3.0f);
+	Point b(3.0f ,2.0f);
+	Point c(1.0f,1.0f);
+	Point point(1.2f, 2.89f);
 
 	Fixed test = area(a, b, c);
-	std::cout << test << std::endl;
+	std::cout << bsp(a, b, c, point) << std::endl;
 	return (0);
 }
