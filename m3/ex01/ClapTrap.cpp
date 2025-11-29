@@ -75,7 +75,7 @@ int	ClapTrap::checkDeath(std::string deathMsg)
 	if (_hitPoints > 0)
 		return (0);
 	std::cout 
-	<< "/!\\ ClapTrap [" << _name << "] is dead, " << deathMsg << std::endl;
+	<< "/!\\ [" << _name << "] is dead, " << deathMsg << std::endl;
 	return (1);
 }
 
@@ -84,6 +84,6 @@ int	ClapTrap::checkEnergy(std::string missingEnergyMsg)
 	if (_energyPoints > 0)
 		return (0);
 	std::cout 
-	<< "/!\\ ClapTrap [" << _name << "] is out of energy, " << missingEnergyMsg << std::endl;
+	<< "/!\\ [" << _name << "] is out of energy, " << missingEnergyMsg << std::endl;
 	return (1);
 }
