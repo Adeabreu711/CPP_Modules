@@ -1,6 +1,8 @@
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include "IMateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
 
 int	main()
 {
@@ -22,3 +24,9 @@ int	main()
 	delete	src;
 	return	(0);
 }
+
+// int	main()
+// {
+// 	ICharacter	*new = new ICharacter("new");
+// 	return	(0);
+// }
