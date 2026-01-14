@@ -46,14 +46,18 @@ int	main(int argc, char *argv[])
 
 	new_filename = ((std::string) argv[1]).append(".replace");
 	std::ifstream src_file(argv[1]);
-	std::ofstream dst_file(new_filename.c_str());
 
-	if (!src_file.is_open() || !dst_file.is_open())
+	if (!src_file.is_open())
 	{
 		std::cout << "Error : file cannot be opened" << std::endl;
 		return (1);
 	}
-
+	std::ofstream dst_file(new_filename.c_str());
+	if (!dst_file.is_open())
+	{
+		std::cout << "Error : .replace file cannot be opened" << std::endl;
+		return (1);
+	}
 	replaceInFile(src_file, dst_file, argv);
 	return (0);
 }
