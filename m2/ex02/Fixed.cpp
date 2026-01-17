@@ -2,7 +2,7 @@
 #include <cmath>
 
 //Fixed RawBits Var Constructor
-Fixed::Fixed(const int raw) : _rawBits(raw)
+Fixed::Fixed(const int raw) : _rawBits(raw << _fractionalBitsNb)
 {}
 
 //Fixed RawBits Var Constructor
@@ -92,7 +92,7 @@ Fixed	Fixed::operator*(const Fixed &cpy) const
 Fixed	Fixed::operator/(const Fixed &cpy) const
 {
 	Fixed	fixed;
-	if (!cpy._rawBits)
+	if (!cpy._rawBits) 
 		return (0);
 	fixed.setRawBits((_rawBits << _fractionalBitsNb) / cpy.getRawBits());
 	return (fixed);
@@ -102,16 +102,16 @@ Fixed	Fixed::operator/(const Fixed &cpy) const
 Fixed	Fixed::operator++(int)
 {
 	Fixed	tmp = *this;
-	_rawBits++;
-	return (tmp._rawBits);
+	++*this;
+	return (tmp);
 }
 
 //Fixed '--' Post Increment Operator Overload
 Fixed	Fixed::operator--(int)
 {
 	Fixed	tmp = *this;
-	_rawBits--;
-	return (tmp._rawBits);
+	--*this;
+	return (tmp);
 }
 
 //Fixed '++' Pre Increment Operator Overload

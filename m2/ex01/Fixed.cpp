@@ -2,7 +2,7 @@
 #include <cmath>
 
 //Fixed RawBits Var Constructor
-Fixed::Fixed(const int raw) : _rawBits(raw)
+Fixed::Fixed(const int raw) : _rawBits(raw << _fractionalBitsNb)
 {
 	std::cout << "Int constructor called" << std::endl;
 }
