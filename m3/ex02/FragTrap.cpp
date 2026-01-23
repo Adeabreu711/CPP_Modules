@@ -42,6 +42,8 @@ FragTrap& FragTrap::operator=(const FragTrap &cpy)
 
 void	FragTrap::highFivesGuys(void)
 {
+	if (checkDeath(HIGH_FIVES_MSG))
+		return ;
 	std::cout << "*FragTrap* [" << _name << "]: HelLo, Do yOuu waNt A hIgh FiVe ?" << std::endl;
 }
 

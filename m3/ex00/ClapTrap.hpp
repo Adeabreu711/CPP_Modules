@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-# define ATTACK_MSG "he can't be attacked"
-# define BE_REPAIRED_MSG "he can't attack"
-# define TAKE_DMG_MSG "he can't be repaired"
+# define ATTACK_MSG "he can't attack"
+# define BE_REPAIRED_MSG "he can't be repaired"
+# define TAKE_DMG_MSG "he can't be attacked"
 
 class ClapTrap
 {

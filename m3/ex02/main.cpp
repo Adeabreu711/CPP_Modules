@@ -18,9 +18,9 @@ int	main(void)
 	cstFragTrap.attack("test2");
 	cpyFragTrap.attack("test3");
 
-	std::cout << std::endl << "TAKE DOMMAGE CALL :" << std::endl;
+	std::cout << std::endl << "TAKE DAMAGE CALL :" << std::endl;
 
-	dftFragTrap.takeDamage(10);
+	dftFragTrap.takeDamage(110);
 	cstFragTrap.takeDamage(5);
 	cstFragTrap.takeDamage(2);
 

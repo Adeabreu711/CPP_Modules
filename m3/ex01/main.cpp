@@ -17,7 +17,7 @@ int	main(void)
 	cstScavTrap.attack("test2");
 	cpyScavTrap.attack("test3");
 
-	std::cout << std::endl << "TAKE DOMMAGE CALL :" << std::endl;
+	std::cout << std::endl << "TAKE DAMAGE CALL :" << std::endl;
 
 	dftScavTrap.takeDamage(10);
 	cstScavTrap.takeDamage(5);

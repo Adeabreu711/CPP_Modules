@@ -16,9 +16,10 @@ int	main(void)
 	cstClapTrap.attack("test2");
 	cpyClapTrap.attack("test3");
 
-	std::cout << std::endl << "TAKE DOMMAGE CALL :" << std::endl;
+	std::cout << std::endl << "TAKE DAMAGE CALL :" << std::endl;
 
 	dftClapTrap.takeDamage(10);
+	dftClapTrap.attack("test4");
 	cstClapTrap.takeDamage(5);
 	cstClapTrap.takeDamage(2);
 

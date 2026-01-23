@@ -43,8 +43,8 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	if (checkDeath(TAKE_DMG_MSG))
 		return ;
 	_hitPoints -= amount;
-	std::cout 
-		<< "ClapTrap [" << _name << "] take ["
+	std::cout
+		<< "ClapTrap [" << _name << "] takes ["
 		<< amount << "] points of damage !" << std::endl;
 }
 void	ClapTrap::attack(const std::string& target)
@@ -52,9 +52,9 @@ void	ClapTrap::attack(const std::string& target)
 	if (checkDeath(ATTACK_MSG) || checkEnergy(ATTACK_MSG))
 		return ;
 	_energyPoints--;
-	std::cout 
+	std::cout
 		<< "ClapTrap [" << _name << "] attacks "
-		<< target << " causing [" << _attackDamage 
+		<< target << " causing [" << _attackDamage
 		<< "] points of damage !" << std::endl;
 }
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -74,7 +74,7 @@ int	ClapTrap::checkDeath(std::string deathMsg)
 {
 	if (_hitPoints > 0)
 		return (0);
-	std::cout 
+	std::cout
 	<< "/!\\ ClapTrap [" << _name << "] is dead, " << deathMsg << std::endl;
 	return (1);
 }
@@ -83,7 +83,7 @@ int	ClapTrap::checkEnergy(std::string missingEnergyMsg)
 {
 	if (_energyPoints > 0)
 		return (0);
-	std::cout 
+	std::cout
 	<< "/!\\ ClapTrap [" << _name << "] is out of energy, " << missingEnergyMsg << std::endl;
 	return (1);
 }

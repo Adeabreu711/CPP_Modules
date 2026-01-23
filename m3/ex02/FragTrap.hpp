@@ -3,6 +3,8 @@
 
 #include "ClapTrap.hpp"
 
+# define HIGH_FIVES_MSG "he can't high five"
+
 class FragTrap : public ClapTrap
 {
 	public :

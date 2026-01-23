@@ -3,6 +3,8 @@
 
 #include "ClapTrap.hpp"
 
+# define GUARD_GATE_MSG "he can't guard any gate"
+
 class ScavTrap : public ClapTrap
 {
 	public :

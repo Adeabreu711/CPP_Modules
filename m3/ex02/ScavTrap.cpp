@@ -42,21 +42,21 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &cpy)
 
 void	ScavTrap::attack(const std::string& target)
 {
-	if (checkDeath(ATTACK_MSG))
+	if (checkDeath(ATTACK_MSG) || checkEnergy(ATTACK_MSG))
 		return ;
 	_energyPoints--;
-	std::cout 
-		<< "ScavTrapt [" << _name << "] attacks with passion "
-		<< target << " causing [" << _attackDamage 
+	std::cout
+		<< "ScavTrap [" << _name << "] attacks with passion "
+		<< target << " causing [" << _attackDamage
 		<< "] points of damage !" << std::endl;
 }
 
 void		ScavTrap::guardGate(void)
 {
-	if (checkDeath(""))
+	if (checkDeath(GUARD_GATE_MSG))
 		return ;
 	std::cout
-		<< "ScavTrapt [" << _name <<
+		<< "ScavTrap [" << _name <<
 		"] is now in gate keeper mode." << std::endl;
 }
 

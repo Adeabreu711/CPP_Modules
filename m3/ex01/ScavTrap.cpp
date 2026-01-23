@@ -6,7 +6,6 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	options = new std::string;
 
 	std::cout << "BrrRrrrR... Inherited Default Constructor called" << std::endl;
 }
@@ -16,7 +15,6 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	options = new std::string;
 
 	std::cout << "BrrRrrrR... Inherited String Constructor called" << std::endl;
 }
@@ -30,7 +28,6 @@ ScavTrap::ScavTrap(const ScavTrap &cpy) : ClapTrap()
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << "BrrRrrrR... Inherited Default Destructor called" << std::endl;
-	delete options;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &cpy)
@@ -45,12 +42,12 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &cpy)
 
 void	ScavTrap::attack(const std::string& target)
 {
-	if (checkDeath(ATTACK_MSG))
+	if (checkDeath(ATTACK_MSG) || checkEnergy(ATTACK_MSG))
 		return ;
 	_energyPoints--;
-	std::cout 
-		<< "ScavTrapt [" << _name << "] attacks with passion "
-		<< target << " causing [" << _attackDamage 
+	std::cout
+		<< "ScavTrap [" << _name << "] attacks with passion "
+		<< target << " causing [" << _attackDamage
 		<< "] points of damage !" << std::endl;
 }
 
@@ -59,7 +56,7 @@ void		ScavTrap::guardGate(void)
 	if (checkDeath(GUARD_GATE_MSG))
 		return ;
 	std::cout
-		<< "ScavTrapt [" << _name <<
+		<< "ScavTrap [" << _name <<
 		"] is now in gate keeper mode." << std::endl;
 }
 
