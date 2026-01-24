@@ -3,10 +3,8 @@
 Ice::Ice() : AMateria("ice")
 {}
 
-Ice::Ice(const Ice &cpy) : AMateria("ice")
-{
-	*this = cpy;
-}
+Ice::Ice(const Ice &cpy) : AMateria(cpy)
+{}
 
 Ice::~Ice()
 {}

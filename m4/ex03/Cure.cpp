@@ -3,10 +3,8 @@
 Cure::Cure() : AMateria("cure")
 {}
 
-Cure::Cure(const Cure &cpy) : AMateria("cure")
-{
-	*this = cpy;
-}
+Cure::Cure(const Cure &cpy) : AMateria(cpy)
+{}
 
 Cure::~Cure()
 {}

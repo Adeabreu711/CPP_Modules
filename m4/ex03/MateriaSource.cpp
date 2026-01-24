@@ -18,7 +18,16 @@ MateriaSource::~MateriaSource()
 
 MateriaSource&	MateriaSource::operator=(const MateriaSource &cpy)
 {
-	*_inventory = *cpy._inventory;
+	if (this == &cpy)
+			return (*this);
+	for (int i = 0; i < MAX_MATERIA; i++)
+	{
+		delete _inventory[i];
+		if (cpy._inventory[i])
+			_inventory[i] = cpy._inventory[i]->clone();
+		else
+			_inventory[i] = NULL;
+	}
 	return (*this);
 }
 
@@ -31,7 +40,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 	{
 		if (_inventory[i] == NULL)
 		{
-			_inventory[i] = cpy;
+			_inventory[i] = cpy->clone();
 			return ;
 		}
 	}
