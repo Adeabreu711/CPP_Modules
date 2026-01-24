@@ -10,7 +10,7 @@ Dog::Dog(const std::string &type) : Animal(type), _brainPtr(new Brain())
 	std::cout << "*Dog* String Constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &cpy) : Animal(cpy), _brainPtr(new Brain())
+Dog::Dog(const Dog &cpy) : Animal(cpy), _brainPtr(new Brain(*cpy._brainPtr))
 {
 	std::cout << "*Dog* Copy Constructor called" << std::endl;
 }
@@ -22,12 +22,21 @@ Dog::~Dog(void)
 
 Dog&	Dog::operator=(const Dog &cpy)
 {
-	_type = cpy._type;
 	std::cout << "*Dog* Copy assignment operator called" << std::endl;
+	if (this == &cpy)
+		return (*this);
+	Animal::operator=(cpy);
+	delete _brainPtr;
+	_brainPtr = new Brain(*cpy._brainPtr);
 	return (*this);
 }
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << getType() << ": Baark bark bark !" << std::endl;
+}
+
+const Brain&	Dog::getBrain(void)const
+{
+	return (*_brainPtr);
 }

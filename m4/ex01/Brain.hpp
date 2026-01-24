@@ -11,7 +11,7 @@ class Brain
 		~Brain(void);
 
 		Brain&	operator=(const Brain &cpy);
-	
+
 	private :
 		std::string	_ideas[100];
 };

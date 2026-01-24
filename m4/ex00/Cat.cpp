@@ -26,7 +26,7 @@ Cat&	Cat::operator=(const Cat &cpy)
 	return (*this);
 }
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void) const
 {
 	std::cout << getType() << ": Miiiiiiaow miaaaaow !" << std::endl;
 }

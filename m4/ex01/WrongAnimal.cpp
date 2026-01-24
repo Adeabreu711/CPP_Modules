@@ -27,12 +27,12 @@ WrongAnimal&	WrongAnimal::operator=(const WrongAnimal &cpy)
 	return (*this);
 }
 
-std::string	WrongAnimal::getType(void)
+const std::string	WrongAnimal::getType(void) const
 {
 	return (_type);
 }
 
-void	WrongAnimal::makeSound(void)
+void	WrongAnimal::makeSound(void) const
 {
 	std::cout << "*Wrong sound* " << std::endl;
 }

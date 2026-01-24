@@ -26,7 +26,7 @@ Dog&	Dog::operator=(const Dog &cpy)
 	return (*this);
 }
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << getType() << ": Baark bark bark !" << std::endl;
 }

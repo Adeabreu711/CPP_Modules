@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
@@ -6,77 +6,32 @@
 
 int	main(void)
 {
-	// {
-	// 	std::cout << "CONSTRUCTOR CALL :" << std::endl;
+	//__________VIRTUAL-TEST__________
+	{
+		AAnimal* cat = new Cat();
 
-	// 	Animal	*dftAnimal = new Animal();
-	// 	Dog		*dftDog = new Dog();
-	// 	Cat		*dftCat = new Cat();
+		delete cat;
+		std::cout << std::endl;
+	}
+	//__________DEEP-COPY-TEST__________
+	{
+		Cat dftCat;
+		Cat cpyCat = dftCat;
 
-	// 	std::cout << std::endl << "TYPE GUETTER :" << std::endl;
+		Dog dftDog;
+		Dog cpyDog = dftDog;
 
-	// 	std::cout << dftAnimal->getType() << std::endl;
-	// 	std::cout << dftDog->getType() << std::endl;
-	// 	std::cout << dftCat->getType() << std::endl;
+		std::cout << "dftCat [brainPtr]: " << &dftCat.getBrain() << std::endl;
+		std::cout << "cpyCat [brainPtr]: " << &cpyCat.getBrain() << std::endl;
 
-	// 	std::cout << std::endl << "ANIMAL SOUNDS :" << std::endl;
-
-	// 	dftAnimal->makeSound();
-	// 	dftDog->makeSound();
-	// 	dftCat->makeSound();
-
-	// 	std::cout << std::endl << "DESTRUCTOR CALL :" << std::endl;
-
-	// 	delete dftAnimal;
-	// 	delete dftDog;
-	// 	delete dftCat;
-	// }
-	// std::cout << std::endl << std::endl;
-	// {
-	// 	std::cout << "CONSTRUCTOR CALL :" << std::endl;
-
-	// 	WrongAnimal		*dftWrongAnimal = new WrongAnimal();
-	// 	WrongCat		*dftWrongCat = new WrongCat();
-
-	// 	std::cout << std::endl << "TYPE GUETTER :" << std::endl;
-
-	// 	std::cout << dftWrongAnimal->getType() << std::endl;
-	// 	std::cout << dftWrongCat->getType() << std::endl;
-
-	// 	std::cout << std::endl << "ANIMAL SOUNDS :" << std::endl;
-
-	// 	dftWrongAnimal->makeSound();
-	// 	dftWrongCat->makeSound();
-
-	// 	std::cout << std::endl << "DESTRUCTOR CALL :" << std::endl;
-		
-	// 	delete dftWrongAnimal;
-	// 	delete dftWrongCat;
-	// }
-	// {
-	// 	std::cout << "CONSTRUCTOR CALL :" << std::endl;
-
-	// 	Animal	*animalList[20];
-		
-	// 	for (int i = 0; i < 20; i++)
-	// 	{
-	// 		if (i % 2)
-	// 			animalList[i] = new Dog();
-	// 		else
-	// 			animalList[i] = new Cat();
-	// 	}
-
-	// 	std::cout << std::endl << "DESTRUCTOR CALL :" << std::endl;
-
-	// 	for (int i = 0; i < 20; i++)
-	// 	{
-	// 		delete animalList[i];
-	// 	}
-	// }
+		std::cout << "dftDog [brainPtr]: " << &dftDog.getBrain() << std::endl;
+		std::cout << "cpyDog [brainPtr]: " << &cpyDog.getBrain() << std::endl;
+		std::cout << std::endl;
+	}
 	{
 		std::cout << "CONSTRUCTOR CALL :" << std::endl;
 
-		Animal	*catAnimal = new Cat();
+		AAnimal	*catAnimal = new Cat();
 
 		catAnimal->makeSound();
 		// Animal	*animal = new Animal();

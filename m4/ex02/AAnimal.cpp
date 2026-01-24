@@ -1,38 +1,38 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal(void) : _type("Animal")
+AAnimal::AAnimal(void) : _type("Animal")
 {
 	std::cout << "Default Constructor called" << std::endl;
 }
 
-Animal::Animal(const std::string &type) : _type(type)
+AAnimal::AAnimal(const std::string &type) : _type(type)
 {
 	std::cout << "String Constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &cpy)
+AAnimal::AAnimal(const AAnimal &cpy)
 {
 	*this = cpy;
 	std::cout << "Copy Constructor called" << std::endl;
 }
-Animal::~Animal(void)
+AAnimal::~AAnimal(void)
 {
 	std::cout << "Default Destructor called" << std::endl;
 }
 
-Animal&	Animal::operator=(const Animal &cpy)
+AAnimal&	AAnimal::operator=(const AAnimal &cpy)
 {
 	_type = cpy._type;
 	std::cout << "Copy assignment operator called" << std::endl;
 	return (*this);
 }
 
-std::string	Animal::getType(void)
+const std::string	AAnimal::getType(void) const
 {
 	return (_type);
 }
 
-void	Animal::makeSound(void)
+void	AAnimal::makeSound(void) const
 {
 	std::cout << "*" << _type << " sound* " << std::endl;
 }

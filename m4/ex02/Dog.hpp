@@ -2,10 +2,10 @@
 # define DOG_HPP
 
 #include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
 	public :
 		Dog(void);
@@ -15,7 +15,8 @@ class Dog : public Animal
 
 		Dog&	operator=(const Dog &cpy);
 
-		void	makeSound(void);
+		const Brain&	getBrain(void)const;
+		void			makeSound(void) const;
 
 		private :
 			Brain	*_brainPtr;

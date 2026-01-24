@@ -21,7 +21,9 @@ WrongCat::~WrongCat(void)
 
 WrongCat&	WrongCat::operator=(const WrongCat &cpy)
 {
-	_type = cpy._type;
 	std::cout << "*WrongCat* Copy assignment operator called" << std::endl;
+	if (this == &cpy)
+		return (*this);
+	_type = cpy._type;
 	return (*this);
 }
