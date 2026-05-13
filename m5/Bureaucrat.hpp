@@ -14,14 +14,17 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& cpy);
 		Bureaucrat(const std::string name, int grade);
 		~Bureaucrat();
+		const std::string	GetName() const;
+		size_t				GetGrade() const;
+		void				CheckGrade() const;
+		void				UpGrade();
+		void				DownGrade();
+	
 	private :
 		const std::string _name;
 		size_t	_grade;
 
 	Bureaucrat&	operator=(const Bureaucrat &cpy);
-
-	const std::string	GetName() const;
-	size_t	GetGrade() const;
 
 	class GradeTooHighException : public std::exception
 	{
