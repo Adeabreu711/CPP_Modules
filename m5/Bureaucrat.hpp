@@ -4,19 +4,35 @@
 #include <iostream>
 #include <exception>
 
-#define MSG_GRADETOOHIGH ""
-#define MSG_GRADETOOLOW ""
+#define LOWEST_GRADE 150
+#define HIGHEST_GRADE 1
 
-
-class Bureaucrat : public std::exception
+class Bureaucrat
 {
 	public :
+		Bureaucrat();
+		Bureaucrat(const Bureaucrat& cpy);
 		Bureaucrat(const std::string name, int grade);
-		virtual ~Bureaucrat() throw();
-		virtual const char* what() const throw();
-	private : 
+		~Bureaucrat();
+	private :
 		const std::string _name;
-		int	_grade;
+		size_t	_grade;
+
+	Bureaucrat&	operator=(const Bureaucrat &cpy);
+
+	const std::string	GetName() const;
+	size_t	GetGrade() const;
+
+	class GradeTooHighException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+	class GradeTooLowException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
 };
 
 
