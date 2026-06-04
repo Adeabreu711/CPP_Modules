@@ -2,29 +2,40 @@
 
 //____________________CONSTRUCTORS____________________
 
-Form::Form() : 
+Form::Form() :
 _name("dftForm"),
-_signGrade(1),
-_executeGrade(1),
+_signGrade(LOWEST_GRADE),
+_executeGrade(LOWEST_GRADE),
 _signed(false)
 {
-	std::cout << "Default Constructor called [" << _name << "]" << std::endl;
+	std::cout << "Default Form Constructor called [" << _name << "]" << std::endl;
 }
 
-Form::Form(const std::string name, const size_t signGrade, const size_t executeGrade) : 
+Form::Form(const std::string name, const size_t signGrade, const size_t executeGrade) :
 _name(name), 
 _signGrade(signGrade),
 _executeGrade(executeGrade),
 _signed(false)
 {
-	std::cout << "Custom Constructor called [" << _name << "]" << std::endl;
+	std::cout << "Custom Form Constructor called [" << _name << "]" << std::endl;
+	CheckGrade();
+}
+
+Form::Form(const Form& cpy) :
+_name(cpy._name), 
+_signGrade(cpy._signGrade),
+_executeGrade(cpy._executeGrade),
+_signed(cpy._signed)
+{
+	std::cout << "Copy Form Constructor called [" << _name << "]" << std::endl;
+	CheckGrade();
 }
 
 //____________________DESTRUCTORS____________________
 
 Form::~Form()
 {
-	std::cout << "Default Destructor called [" << _name << "]" << std::endl;
+	std::cout << "Default Form Destructor called [" << _name << "]" << std::endl;
 }
 
 //____________________OVERLOADS____________________
@@ -39,18 +50,19 @@ std::ostream &operator<<(std::ostream &os, const Form &cpy)
 
 //____________________FUNCTIONS____________________
 
-void	Form::CheckGrade(Bureaucrat &bureaucrat)
+void	Form::CheckGrade()
 {
-	if (bureaucrat.GetGrade() > _signGrade)
+	if (_signGrade > LOWEST_GRADE || _executeGrade > LOWEST_GRADE)
 		throw (GradeTooLowException());
-	else if (bureaucrat.GetGrade() <  HIGHEST_GRADE)
+	else if (_signGrade < HIGHEST_GRADE || _executeGrade < HIGHEST_GRADE)
 		throw (GradeTooHighException());
 }
 
 void	Form::BeSigned(Bureaucrat &bureaucrat)
 {
+	if (bureaucrat.GetGrade() > _signGrade)
+		throw(GradeTooLowException());
 	_signed = true;
-	//TODO
 }
 
 //____________________GET/SET____________________

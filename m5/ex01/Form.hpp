@@ -19,7 +19,7 @@ class Form
 		const size_t		GetExecuteGrade() const; 
 		bool				GetSigned() const;
 
-		void				CheckGrade(Bureaucrat &bureaucrat);
+		void				CheckGrade();
 		void				BeSigned(Bureaucrat &bureaucrat);
 
 	Form&	operator=(const Form &cpy);
@@ -40,7 +40,6 @@ class Form
 		const size_t		_signGrade;
 		const size_t		_executeGrade;
 		bool				_signed;
-
 };
 
 std::ostream &operator<<(std::ostream &os, const Form &cpy);

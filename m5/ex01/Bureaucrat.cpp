@@ -2,32 +2,38 @@
 
 //____________________CONSTRUCTORS____________________
 
-Bureaucrat::Bureaucrat() : _name("alde-abr"), _grade(LOWEST_GRADE)
+Bureaucrat::Bureaucrat() :
+_name("dftBureaucrat"), 
+_grade(LOWEST_GRADE)
 {
-	std::cout << "Default Constructor called [" << _name << "]" << std::endl;
+	std::cout << "Default Bureaucrat Constructor called [" << _name << "]" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) :
+_name(name),
+_grade(grade)
 {
-	std::cout << "Custom Constructor called [" << _name << "]" << std::endl;
+	std::cout << "Custom  Bureaucrat Constructor called [" << _name << "]" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& cpy)
+Bureaucrat::Bureaucrat(const Bureaucrat& cpy) :
+_name(cpy._name),
+_grade(cpy._grade)
 {
-	std::cout << "Copy Constructor called [" << _name << "]" << std::endl;
-	*this = cpy;
+	std::cout << "Copy Bureaucrat Constructor called [" << _name << "]" << std::endl;
 }
+
 //____________________DESTRUCTORS____________________
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Default Destructor called [" << _name << "]" << std::endl;
+	std::cout << "Default Bureaucrat Destructor called [" << _name << "]" << std::endl;
 }
 
 //____________________OVERLOADS____________________
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 {
-	std::cout << "Assignation operator called" << std::endl;
+	std::cout << "Bureaucrat Assignation operator called" << std::endl;
 	if (this == &src)
 		return (*this);
 	this->_grade = src.GetGrade();
