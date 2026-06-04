@@ -40,5 +40,7 @@ class Bureaucrat
 		size_t				_grade;
 };
 
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &cpy);
+
 
 #endif

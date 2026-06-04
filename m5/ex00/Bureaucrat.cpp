@@ -34,6 +34,13 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 	return (*this);
 }
 
+//Ostream '<<' Assignement Operator Overload
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &cpy)
+{
+	os << cpy.GetName() << ", bureaucrat grade " << cpy.GetGrade();
+	return (os);
+}
+
 //____________________GET/SET____________________
 
 size_t	Bureaucrat::GetGrade() const
@@ -50,19 +57,17 @@ const std::string	Bureaucrat::GetName() const
 
 void	Bureaucrat::IncrementGrade()
 {
-	if(_grade < 1)
-		return ;
 	_grade--;
+	CheckGrade();
 }
 
 void	Bureaucrat::DecrementGrade()
 {
-	if(_grade == (size_t)-1)
-		return ;
 	_grade++;
+	CheckGrade();
 }
 
-void	Bureaucrat::CheckGrade() throw()
+void	Bureaucrat::CheckGrade()
 {
 	if (_grade > LOWEST_GRADE)
 		throw (GradeTooLowException());
