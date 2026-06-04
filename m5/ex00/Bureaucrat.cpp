@@ -2,20 +2,28 @@
 
 //____________________CONSTRUCTORS____________________
 
-Bureaucrat::Bureaucrat() : _name("alde-abr"), _grade(LOWEST_GRADE)
+Bureaucrat::Bureaucrat() :
+_name("alde-abr"),
+_grade(LOWEST_GRADE)
 {
 	std::cout << "Default Constructor called [" << _name << "]" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) :
+_name(name),
+_grade(grade)
 {
 	std::cout << "Custom Constructor called [" << _name << "]" << std::endl;
+	CheckGrade();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& cpy)
+Bureaucrat::Bureaucrat(const Bureaucrat& cpy) :
+_name(cpy._name),
+_grade(cpy._grade)
+
 {
 	std::cout << "Copy Constructor called [" << _name << "]" << std::endl;
-	*this = cpy;
+	CheckGrade();
 }
 //____________________DESTRUCTORS____________________
 

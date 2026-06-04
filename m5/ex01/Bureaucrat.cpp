@@ -14,6 +14,7 @@ _name(name),
 _grade(grade)
 {
 	std::cout << "Custom  Bureaucrat Constructor called [" << _name << "]" << std::endl;
+	CheckGrade();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& cpy) :
@@ -21,6 +22,7 @@ _name(cpy._name),
 _grade(cpy._grade)
 {
 	std::cout << "Copy Bureaucrat Constructor called [" << _name << "]" << std::endl;
+	CheckGrade();
 }
 
 //____________________DESTRUCTORS____________________
