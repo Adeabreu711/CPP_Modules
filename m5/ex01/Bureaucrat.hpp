@@ -21,6 +21,7 @@ class Bureaucrat
 		void	IncrementGrade();
 		void	DecrementGrade();
 		void	CheckGrade();
+		void	SignForm(Form &form);
 
 		Bureaucrat&	operator=(const Bureaucrat &cpy);
 

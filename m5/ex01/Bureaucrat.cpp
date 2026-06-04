@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 //____________________CONSTRUCTORS____________________
 
@@ -81,6 +82,11 @@ void	Bureaucrat::CheckGrade()
 		throw (GradeTooLowException());
 	else if (_grade < HIGHEST_GRADE)
 		throw (GradeTooHighException());
+}
+
+void	Bureaucrat::SignForm(Form &form)
+{
+	form.BeSigned(*this);
 }
 
 //____________________EXEPTIONS____________________
