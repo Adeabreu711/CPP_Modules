@@ -1,0 +1,84 @@
+#include "Bureaucrat.hpp"
+
+//____________________CONSTRUCTORS____________________
+
+Bureaucrat::Bureaucrat() : _name("alde-abr"), _grade(LOWEST_GRADE)
+{
+	std::cout << "Default Constructor called [" << _name << "]" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
+{
+	std::cout << "Custom Constructor called [" << _name << "]" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& cpy)
+{
+	std::cout << "Copy Constructor called [" << _name << "]" << std::endl;
+	*this = cpy;
+}
+//____________________DESTRUCTORS____________________
+
+Bureaucrat::~Bureaucrat()
+{
+	std::cout << "Default Destructor called [" << _name << "]" << std::endl;
+}
+
+//____________________OVERLOADS____________________
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
+{
+	std::cout << "Assignation operator called" << std::endl;
+	if (this == &src)
+		return (*this);
+	this->_grade = src.GetGrade();
+	return (*this);
+}
+
+//____________________GET/SET____________________
+
+size_t	Bureaucrat::GetGrade() const
+{
+	return (_grade);
+}
+
+const std::string	Bureaucrat::GetName() const
+{
+	return (_name);
+}
+
+//____________________FUNCTIONS____________________
+
+void	Bureaucrat::IncrementGrade()
+{
+	if(_grade < 1)
+		return ;
+	_grade--;
+}
+
+void	Bureaucrat::DecrementGrade()
+{
+	if(_grade == (size_t)-1)
+		return ;
+	_grade++;
+}
+
+void	Bureaucrat::CheckGrade() throw()
+{
+	if (_grade > LOWEST_GRADE)
+		throw (GradeTooLowException());
+	else if (_grade < HIGHEST_GRADE)
+		throw (GradeTooHighException());
+}
+
+//____________________EXEPTIONS____________________
+
+const char *Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade too low");
+};
+
+const char *Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade too high");
+};
+
