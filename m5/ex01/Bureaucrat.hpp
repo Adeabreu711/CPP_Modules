@@ -4,8 +4,11 @@
 #include <iostream>
 #include <exception>
 
+
 #define LOWEST_GRADE 150
 #define HIGHEST_GRADE 1
+
+class Form;
 
 class Bureaucrat
 {
@@ -14,14 +17,14 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& cpy);
 		Bureaucrat(const std::string name, int grade);
 		~Bureaucrat();
-		
+
 		const std::string	GetName() const;
 		size_t				GetGrade() const;
 
-		void	IncrementGrade();
-		void	DecrementGrade();
-		void	CheckGrade();
-		void	SignForm(Form &form);
+		void				IncrementGrade();
+		void				DecrementGrade();
+		void				CheckGrade();
+		void				SignForm(Form &form);
 
 		Bureaucrat&	operator=(const Bureaucrat &cpy);
 

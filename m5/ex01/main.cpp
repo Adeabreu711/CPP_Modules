@@ -1,41 +1,27 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
-	Bureaucrat *low = new Bureaucrat("Bob", 150);
-	Bureaucrat *medium = new Bureaucrat("Vlad", 75);
-	Bureaucrat *high = new Bureaucrat("Djimi", 1);
+	Bureaucrat	bob("Bob", 10);
+	Bureaucrat	greg("Greg", 16);
 
-	//HIGH_TEST
-	try 
+	Form		exam("Exam", 15, 15);
+	Form		carTuning("Car Tuning", 40, 40);
+
+	greg.SignForm(exam);
+	greg.SignForm(carTuning);
+	bob.SignForm(exam);
+
+	try
 	{
-		high->IncrementGrade();
+		Form highTest("High Test", 0, 150); //Grade too high
+		Form lowTest("Low Test", 1, 151); //Low too high
 	}
 	catch(std::exception &e)
 	{
-		std::cout << e.what() << ". Info : " << *high << std::endl;
-	}
-
-	//MEDIUM_TEST
-	try 
-	{
-		medium->IncrementGrade();
-		medium->DecrementGrade();
-	}
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << "Info : " << *medium << std::endl;
-	}
-
-	//LOW_TEST
-	try 
-	{
-		low->DecrementGrade();
-	}
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << "Info : " << *low << std::endl;
+		std::cout << "Exeption: " << e.what() << std::endl;
 	}
 	return (0);
 }

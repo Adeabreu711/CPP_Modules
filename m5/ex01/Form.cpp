@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 //____________________CONSTRUCTORS____________________
 
@@ -8,26 +9,26 @@ _signGrade(LOWEST_GRADE),
 _executeGrade(LOWEST_GRADE),
 _signed(false)
 {
-	std::cout << "Default Form Constructor called [" << _name << "]" << std::endl;
+	//std::cout << "Default Form Constructor called [" << _name << "]" << std::endl;
 }
 
 Form::Form(const std::string name, const size_t signGrade, const size_t executeGrade) :
-_name(name), 
+_name(name),
 _signGrade(signGrade),
 _executeGrade(executeGrade),
 _signed(false)
 {
-	std::cout << "Custom Form Constructor called [" << _name << "]" << std::endl;
+	//std::cout << "Custom Form Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
 Form::Form(const Form& cpy) :
-_name(cpy._name), 
+_name(cpy._name),
 _signGrade(cpy._signGrade),
 _executeGrade(cpy._executeGrade),
 _signed(cpy._signed)
 {
-	std::cout << "Copy Form Constructor called [" << _name << "]" << std::endl;
+	//std::cout << "Copy Form Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
@@ -35,22 +36,22 @@ _signed(cpy._signed)
 
 Form::~Form()
 {
-	std::cout << "Default Form Destructor called [" << _name << "]" << std::endl;
+	//std::cout << "Default Form Destructor called [" << _name << "]" << std::endl;
 }
 
 //____________________OVERLOADS____________________
 
 std::ostream &operator<<(std::ostream &os, const Form &cpy)
 {
-	os << cpy.GetName() << ", sign grade " << cpy.GetSignGrade() 
-	<< ", execute grade" << cpy.GetExecuteGrade() << ", signed [" 
+	os << cpy.GetName() << ", sign grade " << cpy.GetSignGrade()
+	<< ", execute grade " << cpy.GetExecuteGrade() << ", [signed "
 	<< cpy.GetSigned() << "]";
 	return (os);
 }
 
 //____________________FUNCTIONS____________________
 
-void	Form::CheckGrade()
+void	Form::CheckGrade() const
 {
 	if (_signGrade > LOWEST_GRADE || _executeGrade > LOWEST_GRADE)
 		throw (GradeTooLowException());
@@ -72,12 +73,12 @@ const std::string	Form::GetName() const
 	return(_name);
 }
 
-const size_t	Form::GetSignGrade() const
+size_t	Form::GetSignGrade() const
 {
 	return(_signGrade);
 }
 
-const size_t	Form::GetExecuteGrade() const
+size_t	Form::GetExecuteGrade() const
 {
 	return(_executeGrade);
 }
@@ -89,12 +90,12 @@ bool	Form::GetSigned() const
 
 //____________________EXEPTIONS____________________
 
-const char *Bureaucrat::GradeTooLowException::what(void) const throw()
+const char *Form::GradeTooLowException::what(void) const throw()
 {
 	return ("Grade too low");
 };
 
-const char *Bureaucrat::GradeTooHighException::what(void) const throw()
+const char *Form::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade too high");
 };
