@@ -3,39 +3,41 @@
 
 int	main(void)
 {
-	Bureaucrat *low = new Bureaucrat("Bob", 150);
-	Bureaucrat *medium = new Bureaucrat("Vlad", 75);
-	Bureaucrat *high = new Bureaucrat("Djimi", 1);
+	std::cout << "\nCONSTRUCTOS\n" << std::endl;
+	Bureaucrat low("Bob", 150);
+	Bureaucrat medium("Vlad", 75);
+	Bureaucrat high("Djimi", 1);
 
-	//HIGH_TEST
-	try 
+	std::cout << "\nHIGH TEST\n" << std::endl;
+	try
 	{
-		high->IncrementGrade();
+		high.IncrementGrade();
 	}
 	catch(std::exception &e)
 	{
-		std::cout << e.what() << ". Info : " << *high << std::endl;
+		std::cout << e.what() << ". Info : " << high << std::endl;
 	}
 
-	//MEDIUM_TEST
-	try 
+	std::cout << "\nMEDIUM TEST\n" << std::endl;
+	try
 	{
-		medium->IncrementGrade();
-		medium->DecrementGrade();
+		medium.IncrementGrade();
+		medium.DecrementGrade();
 	}
 	catch(std::exception &e)
 	{
-		std::cout << e.what() << "Info : " << *medium << std::endl;
+		std::cout << e.what() << "Info : " << medium << std::endl;
 	}
 
-	//LOW_TEST
-	try 
+	std::cout << "\nLOW TEST\n" << std::endl;
+	try
 	{
-		low->DecrementGrade();
+		low.DecrementGrade();
 	}
 	catch(std::exception &e)
 	{
-		std::cout << e.what() << "Info : " << *low << std::endl;
+		std::cout << e.what() << "Info : " << low << std::endl;
 	}
+	std::cout << "\nDESTRUCTORS\n" << std::endl;
 	return (0);
 }

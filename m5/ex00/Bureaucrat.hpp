@@ -14,7 +14,7 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& cpy);
 		Bureaucrat(const std::string name, int grade);
 		~Bureaucrat();
-		
+
 		const std::string	GetName() const;
 		size_t				GetGrade() const;
 
@@ -41,6 +41,5 @@ class Bureaucrat
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &cpy);
-
 
 #endif

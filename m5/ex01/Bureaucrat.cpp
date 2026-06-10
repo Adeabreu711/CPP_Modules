@@ -7,14 +7,12 @@ Bureaucrat::Bureaucrat() :
 _name("dftBureaucrat"),
 _grade(LOWEST_GRADE)
 {
-	//std::cout << "Default Bureaucrat Constructor called [" << _name << "]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) :
 _name(name),
 _grade(grade)
 {
-	//std::cout << "Custom Bureaucrat Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
@@ -22,7 +20,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& cpy) :
 _name(cpy._name),
 _grade(cpy._grade)
 {
-	//std::cout << "Copy Bureaucrat Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
@@ -30,7 +27,6 @@ _grade(cpy._grade)
 
 Bureaucrat::~Bureaucrat()
 {
-	//std::cout << "Default Bureaucrat Destructor called [" << _name << "]" << std::endl;
 }
 
 //____________________OVERLOADS____________________
