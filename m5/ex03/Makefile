@@ -1,4 +1,4 @@
-NAME = No_you_need_form_28B_not_28C
+NAME = At_least_this_beats_coffee_making
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
