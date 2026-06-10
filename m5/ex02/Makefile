@@ -28,6 +28,7 @@ $(NAME): $(OBJ_DIR) $(OBJ)
 	$(CC) -o $(NAME) $(OBJ)
 
 clean:
+	rm -f *_shrubbery
 	rm -f $(OBJ)
 
 fclean: clean

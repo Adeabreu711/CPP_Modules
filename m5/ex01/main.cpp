@@ -33,6 +33,7 @@ int	main(void)
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
+	
 	try
 	{
 		Form lowTest("Low Test", 1, 151);
