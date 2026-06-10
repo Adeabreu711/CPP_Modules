@@ -26,7 +26,7 @@ int	main(void)
 	}
 	catch(std::exception &e)
 	{
-		std::cout << e.what() << "Info : " << medium << std::endl;
+		std::cout << e.what() << ". Info : " << medium << std::endl;
 	}
 
 	std::cout << "\nLOW TEST\n" << std::endl;
@@ -36,7 +36,7 @@ int	main(void)
 	}
 	catch(std::exception &e)
 	{
-		std::cout << e.what() << "Info : " << low << std::endl;
+		std::cout << e.what() << ". Info : " << low << std::endl;
 	}
 	std::cout << "\nDESTRUCTORS\n" << std::endl;
 	return (0);

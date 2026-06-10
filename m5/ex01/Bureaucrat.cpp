@@ -61,14 +61,16 @@ const std::string	Bureaucrat::GetName() const
 
 void	Bureaucrat::IncrementGrade()
 {
+	if (_grade - 1 < HIGHEST_GRADE)
+		throw(GradeTooHighException());
 	_grade--;
-	CheckGrade();
 }
 
 void	Bureaucrat::DecrementGrade()
 {
+	if (_grade + 1 > LOWEST_GRADE)
+		throw (GradeTooLowException());
 	_grade++;
-	CheckGrade();
 }
 
 void	Bureaucrat::CheckGrade()
