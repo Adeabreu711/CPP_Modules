@@ -4,11 +4,10 @@
 #include <iostream>
 #include <exception>
 
-
 #define LOWEST_GRADE 150
 #define HIGHEST_GRADE 1
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -24,7 +23,8 @@ class Bureaucrat
 		void				IncrementGrade();
 		void				DecrementGrade();
 		void				CheckGrade();
-		void				SignForm(Form &form);
+		void				SignForm(AForm &form);
+		void				ExecuteForm(AForm const &form) const;
 
 		Bureaucrat&	operator=(const Bureaucrat &cpy);
 
@@ -45,6 +45,5 @@ class Bureaucrat
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &cpy);
-
 
 #endif

@@ -1,9 +1,10 @@
-NAME = Form_up_maggots
+NAME = No_you_need_form_28B_not_28C
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = \
-	main.cpp Bureaucrat.cpp Form.cpp
+	main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
+	RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 INCLUDES = -Iincludes/
 

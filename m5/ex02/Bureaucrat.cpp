@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 //____________________CONSTRUCTORS____________________
 
@@ -7,14 +7,12 @@ Bureaucrat::Bureaucrat() :
 _name("dftBureaucrat"),
 _grade(LOWEST_GRADE)
 {
-	//std::cout << "Default Bureaucrat Constructor called [" << _name << "]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) :
 _name(name),
 _grade(grade)
 {
-	//std::cout << "Custom Bureaucrat Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
@@ -22,7 +20,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& cpy) :
 _name(cpy._name),
 _grade(cpy._grade)
 {
-	//std::cout << "Copy Bureaucrat Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
@@ -30,14 +27,12 @@ _grade(cpy._grade)
 
 Bureaucrat::~Bureaucrat()
 {
-	//std::cout << "Default Bureaucrat Destructor called [" << _name << "]" << std::endl;
 }
 
 //____________________OVERLOADS____________________
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 {
-	//std::cout << "Bureaucrat Assignation operator called" << std::endl;
 	if (this == &src)
 		return (*this);
 	this->_grade = src.GetGrade();
@@ -84,7 +79,7 @@ void	Bureaucrat::CheckGrade()
 		throw (GradeTooHighException());
 }
 
-void	Bureaucrat::SignForm(Form &form)
+void	Bureaucrat::SignForm(AForm &form)
 {
 	try
 	{
@@ -94,6 +89,19 @@ void	Bureaucrat::SignForm(Form &form)
 	catch(std::exception &e)
 	{
 		std::cout << *this << " couldn't sign " << form << ". Reason: " << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::ExecuteForm(AForm const &form) const
+{
+	try
+	{
+		form.Execute(*this);
+		std::cout << _name << " executed " << form.GetName() << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << *this << " couldn't execute " << form << ". Reason: " << e.what() << std::endl;
 	}
 }
 

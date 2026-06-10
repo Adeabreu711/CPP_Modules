@@ -1,27 +1,56 @@
-#include <iostream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
-int	main(void)
+int main()
 {
-	Bureaucrat	bob("Bob", 10);
-	Bureaucrat	greg("Greg", 16);
-
-	Form		exam("Exam", 15, 15);
-	Form		carTuning("Car Tuning", 40, 40);
-
-	greg.SignForm(exam);
-	greg.SignForm(carTuning);
-	bob.SignForm(exam);
-
+	std::srand(std::time(NULL));
 	try
 	{
-		Form highTest("High Test", 0, 150); //Grade too high
-		Form lowTest("Low Test", 1, 151); //Low too high
+		Bureaucrat hacker("Hacker", 1);
+		Bureaucrat noob("Noob", 150);
+
+		ShrubberyCreationForm	shrub("home");
+		RobotomyRequestForm		robot("Bender");
+		PresidentialPardonForm	pardon("Arthur Dent");
+
+		std::cout << "\nFORMS\n" << std::endl;
+		std::cout << shrub << std::endl;
+		std::cout << robot << std::endl;
+		std::cout << pardon << std::endl;
+
+		std::cout << "\nEXECUTE UNSIGNED FORM\n" << std::endl;
+		try
+		{
+			shrub.Execute(hacker);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+
+		std::cout << "\nTRY TO SIGN\n" << std::endl;
+		noob.SignForm(shrub);
+
+		std::cout << "\nSIGN FORMS\n" << std::endl;
+		hacker.SignForm(shrub);
+		hacker.SignForm(robot);
+		hacker.SignForm(pardon);
+
+		std::cout << "\nEXECUTION\n" << std::endl;
+		hacker.ExecuteForm(shrub);
+		hacker.ExecuteForm(robot);
+		hacker.ExecuteForm(pardon);
+
+		std::cout << "\nTRY TO EXECUTE" << std::endl;
+		noob.ExecuteForm(shrub);
 	}
-	catch(std::exception &e)
+	catch (std::exception &e)
 	{
-		std::cout << "Exeption: " << e.what() << std::endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 	return (0);
 }
