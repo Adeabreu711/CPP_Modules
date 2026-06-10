@@ -33,6 +33,7 @@ Bureaucrat::~Bureaucrat()
 }
 
 //____________________OVERLOADS____________________
+
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 {
 	std::cout << "Assignation operator called" << std::endl;
@@ -42,7 +43,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 	return (*this);
 }
 
-//Ostream '<<' Assignement Operator Overload
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &cpy)
 {
 	os << cpy.GetName() << ", bureaucrat grade " << cpy.GetGrade();

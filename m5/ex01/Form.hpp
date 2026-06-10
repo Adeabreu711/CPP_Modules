@@ -22,6 +22,8 @@ class Form
 		void				CheckGrade() const;
 		void				BeSigned(Bureaucrat &bureaucrat);
 
+		Form&				operator=(const Form &cpy);
+
 		class GradeTooHighException : public std::exception
 		{
 			public:

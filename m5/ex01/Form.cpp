@@ -9,7 +9,6 @@ _signGrade(LOWEST_GRADE),
 _executeGrade(LOWEST_GRADE),
 _signed(false)
 {
-	//std::cout << "Default Form Constructor called [" << _name << "]" << std::endl;
 }
 
 Form::Form(const std::string name, const size_t signGrade, const size_t executeGrade) :
@@ -18,7 +17,6 @@ _signGrade(signGrade),
 _executeGrade(executeGrade),
 _signed(false)
 {
-	//std::cout << "Custom Form Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
@@ -28,7 +26,6 @@ _signGrade(cpy._signGrade),
 _executeGrade(cpy._executeGrade),
 _signed(cpy._signed)
 {
-	//std::cout << "Copy Form Constructor called [" << _name << "]" << std::endl;
 	CheckGrade();
 }
 
@@ -36,10 +33,17 @@ _signed(cpy._signed)
 
 Form::~Form()
 {
-	//std::cout << "Default Form Destructor called [" << _name << "]" << std::endl;
 }
 
 //____________________OVERLOADS____________________
+
+
+Form	&Form::operator=(const Form &src)
+{
+	if (this == &src)
+		return (*this);
+	return (*this);
+}
 
 std::ostream &operator<<(std::ostream &os, const Form &cpy)
 {

@@ -37,7 +37,6 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 {
-	//std::cout << "Bureaucrat Assignation operator called" << std::endl;
 	if (this == &src)
 		return (*this);
 	this->_grade = src.GetGrade();
