@@ -12,7 +12,7 @@ class AForm
 		AForm();
 		AForm(const AForm& cpy);
 		AForm(const std::string name, const size_t signGrade, const size_t executeGrade);
-		~AForm();
+		virtual ~AForm();
 
 		const std::string	GetName() const;
 		size_t				GetSignGrade() const;

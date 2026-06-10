@@ -10,12 +10,12 @@ int main()
 	std::srand(std::time(NULL));
 	try
 	{
-		Bureaucrat hacker("Hacker", 1);
-		Bureaucrat noob("Noob", 150);
+		Bureaucrat hacker("Hacker Lvl 200", 1);
+		Bureaucrat noob("Noob Lvl 1", 150);
 
-		ShrubberyCreationForm	shrub("home");
-		RobotomyRequestForm		robot("Bender");
-		PresidentialPardonForm	pardon("Arthur Dent");
+		ShrubberyCreationForm	shrub("garden");
+		RobotomyRequestForm		robot("Nick");
+		PresidentialPardonForm	pardon("Big T");
 
 		std::cout << "\nFORMS\n" << std::endl;
 		std::cout << shrub << std::endl;
