@@ -37,7 +37,7 @@ int main()
 
 		try
 		{
-			sp.addNumber(42); // doit throw
+			sp.addNumber(42);
 		}
 		catch (const std::exception &e)
 		{
