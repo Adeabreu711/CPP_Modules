@@ -8,7 +8,7 @@ MutantStack<T>::MutantStack(void)
 }
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack &cpy)
+MutantStack<T>::MutantStack(const MutantStack &cpy) : std::stack<T>(cpy)
 {
 	*this = cpy;
 }
