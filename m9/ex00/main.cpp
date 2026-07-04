@@ -1,36 +1,28 @@
 #include "BitcoinExchange.hpp"
 
-int   errorMsg(std::string msg)
+int errorMsg(std::string msg)
 {
-    std::cout << msg << std::endl;
-    return (1);
-}
-
-int     checkFileErrors(std::ifstream &dataFile, std::ifstream &inputFile)
-{
-     if (!dataFile.is_open())
-        return (errorMsg("Error: missing data.csv file"));
-     if (!inputFile.is_open())
-        return (errorMsg("Error: file doesn't exist."));
-    return (0);
+	std::cout << msg << std::endl;
+	return (1);
 }
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-        return (errorMsg("Error: could not open file."));
-    
-    std::ifstream dataFile("data.csv");
-    std::ifstream inFile(argv[1]);
+	if (argc != 2)
+		return (errorMsg("Error: could not open file."));
 
-    if (checkFileErrors(dataFile, inFile))
-        return (1);
-    
-    Database source;
-    Database input;
-
-    ParseDb(dataFile, source, ',');
-    ParseDb(inFile, input, '|');
-    AnnoucePrice(source, input);
-    return (0);
+	Database		source;
+	std::ifstream	input(argv[1]);
+	if (!input.is_open())
+		return (errorMsg(ERR_INVALID_FILE));
+	try 
+	{
+		parseDb("data.csv", source, ',');
+		annoucePrice(source, input);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+	return (0);
 }
