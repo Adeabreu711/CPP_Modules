@@ -2,7 +2,7 @@
 
 int errorMsg(std::string msg)
 {
-	std::cout << msg << std::endl;
+	std::cerr << msg << std::endl;
 	return (1);
 }
 
