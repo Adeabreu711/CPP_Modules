@@ -65,7 +65,7 @@ static void	checkDate(int date)
 	int	year = date / 10000;
 	int	month = (date / 100) % 100;
 	int	day = date % 100;
-	if (year < START_YEAR || year > END_YEAR
+	if (year < START_YEAR || year > END_YEAR 
 		|| month < 1 || month > 12
 		|| day < 1 || day > 31)
 		throw (std::runtime_error(ERR_DATE_OUT_OF_RANGE + iDateToString(date)));
@@ -74,9 +74,9 @@ static void	checkDate(int date)
 static void	checkValue(float value)
 {
 	if (value < 0)
-		throw (std::runtime_error("Error: not a positive number"));
+		throw (std::runtime_error(ERR_NOT_POSITIVE));
 	if (value > MAX_VALUE)
-		throw (std::runtime_error("Error: too large a number"));
+		throw (std::runtime_error(ERR_TOO_LARGE));
 }
 
 //______________________ANNOUNCE_PRICE________________________
@@ -88,7 +88,7 @@ static float	findRate(int dateToFind, Database &db)
 	if (it != db.end() && it->first == dateToFind)
 		return (it->second);
 	if (it == db.begin())
-		throw (std::runtime_error("Error: no rate found"));
+		throw (std::runtime_error(ERR_NO_RATE));
 	--it;
 	return (it->second);
 }
@@ -104,7 +104,7 @@ void	annoucePrice(Database &src, std::ifstream &input)
 		{
 			std::pair<int, float> pair = parseLine(line, '|');
 			if (pair.first == -1 && pair.second == -1)
-				throw (std::runtime_error("Error: invalid syntax"));
+				throw (std::runtime_error(ERR_INVALID_SYNTAX));
 			checkDate(pair.first);
 			checkValue(pair.second);
 			float price = findRate(pair.first, src) * pair.second;

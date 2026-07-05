@@ -2,19 +2,20 @@
 
 int errorMsg(std::string msg)
 {
-	std::cout << msg << std::endl;
+	std::cerr << msg << std::endl;
 	return (1);
 }
 
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
-		return (errorMsg("Error: could not open file."));
+		return (errorMsg(ERR_INVALID_FILE));
 
 	Database		source;
 	std::ifstream	input(argv[1]);
 	if (!input.is_open())
 		return (errorMsg(ERR_INVALID_FILE));
+
 	try 
 	{
 		parseDb("data.csv", source, ',');
@@ -22,7 +23,8 @@ int main(int argc, char *argv[])
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cerr  << e.what() << std::endl;
+		return (1);
 	}
 	return (0);
 }
