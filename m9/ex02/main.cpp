@@ -1,8 +1,4 @@
 #include "PmergeMe.hpp"
-#include <vector>
-#include <climits>
-#include <cerrno>
-#include <stdlib.h>
 
 int	errorMsg(std::string msg)
 {
@@ -10,25 +6,25 @@ int	errorMsg(std::string msg)
 	return (1);
 }
 
-template <typename T>
-T parseArgs(int argc, char **argv)
+void	printStats(size_t size, double time)
 {
-	T	container;
-
-	for (int i = 1; i < argc; i++)
-	{
-		char *endptr;
-		errno = 0;
-		long value = std::strtol(argv[i], &endptr, 10);
-
-		if (endptr == argv[i] || *endptr != '\0' 
-				|| errno == ERANGE || value < 0 || value > INT_MAX)
-			throw std::invalid_argument("Error : invalid token => " + static_cast<std::string>(argv[i]));
-
-		container.push_back(static_cast<int>(value));
-	}
-	return (container);
+	std::cout	<< "Time to process a range of " 
+				<< size 
+				<< " elements with std::vector : " 
+				<< time 
+				<< " us" 
+				<< std::endl;
 }
+
+template <typename T>
+double	PmergeMe(T &container)
+{
+	clock_t	start = clock();
+	fordJohnson(container);
+	clock_t	end = clock();
+	return ((static_cast<double>(end - start) / CLOCKS_PER_SEC) * 1000000);
+}
+
 
 int	main(int argc, char *argv[])
 {
@@ -36,7 +32,18 @@ int	main(int argc, char *argv[])
 		return (errorMsg("Error: Too few arguments"));
 	try
 	{
-		std::vector<int> vec = parseArgs< std::vector<int> >(argc, argv);
+		Ivec	vec = parseArgs< Ivec >(argc, argv);
+		Ilist	lst = parseArgs< Ilist >(argc, argv);
+
+		printContainer(vec, "Before");
+
+		double	vtime = PmergeMe<Ivec>(vec);
+		double	ltime = PmergeMe<Ilist>(lst);
+
+		printContainer(vec, "After");
+
+		printStats(vec.size(), vtime);
+		printStats(lst.size(), ltime);
 	}
 	catch (std::exception &e)
 	{
