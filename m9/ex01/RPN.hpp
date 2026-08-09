@@ -8,7 +8,6 @@
 
 #define ERR_INVALID_TOKEN "Error: invalid token"
 #define ERR_INVALID_EXP "Error: invalid expression"
-#define ERR_INVALID_OP "Error: invalid operation"
 #define ERR_ARG "Error: RPN need one string argument"
 #define ERR_ILLEGAL_DIV "Error: illegal division"
 

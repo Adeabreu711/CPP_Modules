@@ -20,7 +20,7 @@ static tokenType	getTokenType(std::string token)
 static	void applyOperator(std::string op, std::stack<int> &stack)
 {
 	if (stack.size() < 2)
-		throw (std::runtime_error(ERR_INVALID_OP));
+		return ;
 	operator_t opDic[] = {{'+', _add}, {'-', _sub}, {'*', _mult}, {'/', _div}};
 	int	a = stack.top();
 	stack.pop();
@@ -47,7 +47,7 @@ int	operate(std::string str)
 	std::string token;
 
 	while (ss >> token)
-	{  
+	{
 		tokenType type = getTokenType(token);
 		if (type == INVALID)
 			throw (std::runtime_error(ERR_INVALID_TOKEN));
